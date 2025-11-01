@@ -1,11 +1,14 @@
 <script lang="ts">
 	import { leftBarPinned } from '$lib/stores/sidebar-store';
+	import { cubicInOut } from 'svelte/easing';
+	import { slide } from 'svelte/transition';
 </script>
 
-<div>
+{#if $leftBarPinned}
 	<div
-		class="absolute sidebar z-1000 top-30 bottom-30 overflow-hidden rounded-lg blur-backdrop"
-		style:left={$leftBarPinned ? '20px' : '-500px'}
+		class="sidebar blur-backdrop absolute top-30 bottom-30 z-1000 overflow-hidden rounded-lg"
+		style:left={'20px'}
+		transition:slide={{ duration: 500, delay: 50, easing: cubicInOut, axis: 'y' }}
 	>
 		<div class="sidebar-content">
 			<div class="panel-section">
@@ -422,13 +425,9 @@
 			</div>
 		</div>
 	</div>
-</div>
+{/if}
 
 <style>
-	.sidebar {
-		transition: left 0.3s;
-	}
-
 	.panel-section {
 		padding: 10px;
 	}

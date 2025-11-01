@@ -36,10 +36,6 @@
 			<MapTypeButton>卫星</MapTypeButton>
 		</div>
 	</div>
-
-	<div class="blur-backdrop flex items-center gap-3 rounded-lg pr-4 pl-4">
-		<p class="font-bold text-lg">Armysimulation</p>
-	</div>
 	<!--右-->
 	<div class="blur-backdrop flex gap-4 rounded-lg px-3 py-3 pl-3 text-sm text-stone-900">
 		<div class="flex flex-col gap-1">

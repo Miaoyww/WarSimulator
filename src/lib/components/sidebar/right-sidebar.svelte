@@ -1,34 +1,20 @@
 <script lang="ts">
 	import RightSidebarMenubutton from '$lib/components/buttons/right-sidebar-menubutton.svelte';
 	import { Button } from '$lib/components/ui/button';
-	import { settingOpen } from '$lib/stores/setting-dialog-store';
-	import {
-		ChevronRight,
-		FileUp,
-		Grid3x3,
-		Pin,
-		PinOff,
-		RotateCcw,
-		Ruler,
-		Save,
-		Settings
-	} from '@lucide/svelte';
+	import { FileUp, Grid3x3, Pin, PinOff, Ruler, Save } from '@lucide/svelte';
+	import SettingsButton from '$lib/components/buttons/right-bar/settings-button.svelte';
+	import ResetButton from '$lib/components/buttons/right-bar/reset-button.svelte';
+	import { rightBarPinned } from '$lib/stores/sidebar-store';
+	import PinButton from '../buttons/right-bar/pin-button.svelte';
 
-	// 是否固定展开
-	let pinned = $state(false);
 	// 是否鼠标悬停
 	let hover = $state(false);
 
 	// 计算最终展开状态
-	let expanded = $derived(pinned || hover);
+	let expanded = $derived($rightBarPinned || hover);
 
-	function togglePin() {
-		pinned = !pinned;
-	}
-
-	function openSetting() {
-		settingOpen.update((prev) => !prev);
-		console.log($settingOpen);
+	function togglePin() {P
+		rightBarPinned.update((prev) => !prev);
 	}
 </script>
 
@@ -36,18 +22,12 @@
 <!-- svelte-ignore event_directive_deprecated -->
 <div
 	class="sidebar blur-backdrop absolute top-30 bottom-30 z-1000 flex w-15 flex-1 flex-col justify-between overflow-hidden rounded-lg"
-	style:right={pinned ? '20px' : hover ? '0px' : '-50px'}
+	style:right={$rightBarPinned ? '20px' : hover ? '0px' : '-50px'}
 	on:mouseenter={() => (hover = true)}
 	on:mouseleave={() => (hover = false)}
 >
 	<div class="toggle-btn">
-		<Button variant="ghost" size="icon" onclick={togglePin}>
-			{#if pinned}
-				<Pin size={20} />
-			{:else}
-				<PinOff size={20} />
-			{/if}
-		</Button>
+		<PinButton />
 	</div>
 
 	<div class="panel-section">
@@ -78,14 +58,10 @@
 				</Button>
 			</RightSidebarMenubutton>
 			<RightSidebarMenubutton content="重置推演">
-				<Button variant="ghost" size="icon">
-					<RotateCcw />
-				</Button>
+				<ResetButton />
 			</RightSidebarMenubutton>
 			<RightSidebarMenubutton content="设置">
-				<Button variant="ghost" onclick={openSetting} size="icon">
-					<Settings />
-				</Button>
+				<SettingsButton />
 			</RightSidebarMenubutton>
 		</div>
 	</div>

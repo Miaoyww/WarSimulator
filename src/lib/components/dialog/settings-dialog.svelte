@@ -1,16 +1,11 @@
 <script lang="ts">
 	import { settingOpen } from '$lib/stores/setting-dialog-store';
-	import { onDestroy, onMount } from 'svelte';
 	import { Button } from '../ui/button';
 	import * as Tabs from '$lib/components/ui/tabs/index.js';
-	import * as Card from '$lib/components/ui/card/index.js';
-	import { Input } from '$lib/components/ui/input/index.js';
-	import { Label } from '$lib/components/ui/label/index.js';
 	import Venue from '$lib/components/dialog/settings/venue.svelte';
 	import General from './settings/general.svelte';
 	import About from './settings/about.svelte';
-	import { crossfade, fade } from 'svelte/transition';
-	import { cubicInOut, cubicOut } from 'svelte/easing';
+	import { fade, scale } from 'svelte/transition';
 	import { X } from '@lucide/svelte';
 	import { ScrollArea } from '$lib/components/ui/scroll-area';
 
@@ -24,7 +19,7 @@
 {#if $settingOpen}
 	<div
 		class="setting-dialog absolute z-1000 flex items-center justify-center rounded-lg"
-		transition:fade={{ duration: 100 }}
+		transition:fade={{ duration: 150 }}
 	>
 		<!-- 左侧边栏 -->
 		<Tabs.Tabs bind:value={activeTab} orientation="vertical" class="flex h-full">

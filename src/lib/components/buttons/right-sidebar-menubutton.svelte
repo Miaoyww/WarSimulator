@@ -3,6 +3,7 @@
 	import * as Tooltip from '$lib/components/ui/tooltip/index.js';
 
     let { content } = $props<{ content: string }>();
+	
 </script>
 
 <Tooltip.Provider>
@@ -11,7 +12,7 @@
 			<slot />
 		</Tooltip.Trigger>
 		<Tooltip.Content>
-			<p>{content}</p>
+			{content}
 		</Tooltip.Content>
 	</Tooltip.Root>
 </Tooltip.Provider>

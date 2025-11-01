@@ -4,15 +4,14 @@
 	import { Label } from '$lib/components/ui/label';
 
 	import { version } from '$app/environment';
-	import { fade } from 'svelte/transition';
+	import favicon from '$lib/assets/favicon.png';
 </script>
 
 <div>
 	<div class="mt-6 pb-10 text-center lg:max-w-4xl ">
 		<div class="mb-4 flex justify-center gap-6 text-gray-600">
-			<Label class="flex h-50 w-50 justify-center rounded-2xl bg-gray-100">图标还没做</Label>
+			<img src="{favicon}" alt="App Logo" class="h-64 w-64 rounded-md shadow-md" />
 		</div>
-		<h1 class="text-4xl font-extrabold tracking-wide">Armysimulation</h1>
 	</div>
 
 	<div class="space-y-3 pb-10 lg:max-w-4xl ">
@@ -26,7 +25,7 @@
 				{id}
 				class="w-24"
 				variant="outline"
-				href="https://github.com/Miaoyww/Armysimulation/blob/main/License"
+				href="https://github.com/Miaoyww/WarSimulator/blob/master/LICENSE"
 			>
 				MIT
 			</Button>
@@ -37,7 +36,7 @@
 				{id}
 				class="w-24"
 				variant="outline"
-				href="https://github.com/Miaoyww/Armysimulation"
+				href="https://github.com/Miaoyww/WarSimulator"
 			>
 				Github
 			</Button>

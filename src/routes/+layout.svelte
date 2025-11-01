@@ -11,8 +11,18 @@
 	import UnitPro from '$lib/components/unit-pro.svelte';
 	import LeftSidebar from '$lib/components/sidebar/left-sidebar.svelte';
 	import SettingsDialog from '$lib/components/dialog/settings-dialog.svelte';
+	import { ARMYS_NAME } from '$lib/const';
+	import logo from '$lib/assets/logo.svg';
 	let { children } = $props();
+
+	
 </script>
+
+<svelte:head>
+	<title>{ARMYS_NAME}</title>
+	<meta name="title" content="{ARMYS_NAME}" />
+	<link rel="icon" type="image/x-icon" href="{logo}" />
+</svelte:head>
 
 <div>
 	<div>
@@ -22,11 +32,6 @@
 	</div>
 </div>
 
-<!-- <div class="range-legend" id="range-legend" style="display: none;">
-	<h4>攻击范围图例</h4>
-	<div id="legend-content"></div>
-</div> -->
-
 <LeftSidebar />
 <UnitPro />
 <Header />
@@ -34,8 +39,8 @@
 <RightSidebar />
 <SettingsDialog />
 
-<!-- 右键菜单 -->
-<!-- <div
+<div 
+	hidden={true}
 	class="absolute z-[10000] hidden min-w-[160px] rounded-md border border-(--border-color) bg-(--bg-card) py-[5px] shadow"
 	id="context-menu"
 >
@@ -47,7 +52,7 @@
 	<Separator />
 	<div class="context-menu-item" id="context-copy-unit">复制单位</div>
 	<div class="context-menu-item" id="context-move-to">移动至此</div>
-</div> -->
+</div>
 
 <style>
 	* {
